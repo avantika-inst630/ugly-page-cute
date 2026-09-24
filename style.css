@@ -1,0 +1,286 @@
+/* INTENTIONALLY UGLY STARTER STYLES */
+/* These styles are very, very ugly. */
+/* Time to make them attractive, legible, and usable */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap");
+:root {
+  --space-black: #0b0620;
+  --lemon:       #fff34f;
+  --white:       #ffffff;
+
+  --silver:      #c0c0c0;
+  --silver-hi:   #ffffff;
+  --silver-mid:  #808080;
+  --silver-lo:   #404040;
+  --navy:        #0000a8;
+  --ink:         #111111;
+
+
+  --font-content: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive;
+  --font-pixel:   "Press Start 2P", "Courier New", monospace;
+
+  --text-body:  clamp(1rem, 0.4rem + 1vw, 1.65rem);    
+  --text-h1:    clamp(2.2rem, 0.5rem + 3.75vw, 5rem);   
+  --text-h2:    clamp(1.9rem, 0.5rem + 2.7vw, 3.8rem);   
+  --text-pixel: clamp(0.75rem, 0.1rem + 1.2vw, 1.6rem);   
+
+  --gutter: clamp(1rem, 1.4vw, 1.75rem);
+  --text-halo: 0 2px 4px rgba(0, 0, 0, 0.85);}
+
+
+
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body, h1, h2, p, ul, ol, dl, dd { margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  background-color: var(--space-black);
+  color: var(--white);
+  font-family: var(--font-content);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+
+img { display: block; max-width: 100%; }
+
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("bgimage.png") center / cover no-repeat;
+}
+
+
+.recipe {
+  min-height: 100vh;
+  overflow: clip;                     
+  padding: var(--gutter);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: clamp(0.5rem, 1vw, 1rem);
+}
+
+.recipe-header,
+.recipe-top,
+.instructions_section {
+  position: relative;
+  z-index: 1;
+}
+
+.recipe-top {
+  display: grid;
+  gap: 1.5rem;
+}
+
+
+.recipe-title,
+.section-heading {
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--lemon);
+  text-decoration: underline;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.12em;
+  letter-spacing: 0.04em;
+  text-shadow: var(--text-halo);
+}
+
+.recipe-title {
+  font-size: var(--text-h1);
+  text-align: center;
+}
+
+.section-heading {
+  font-size: var(--text-h2);
+  margin-bottom: 0.2em;
+}
+
+.recipe-intro {
+  margin-top: 0.6em;
+  text-wrap: balance;
+  text-align: center;
+  text-shadow: var(--text-halo);
+}
+
+
+
+.ingredients-list {
+  list-style: none;
+  padding-left: 0.3em;
+  text-shadow: var(--text-halo);
+}
+
+
+
+.sysmsg {
+  width: 100%;
+  max-width: 40.5rem;
+  background: var(--silver);
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 3px 3px 0 var(--silver-hi),
+    inset -3px -3px 0 var(--silver-mid),
+    6px 6px 0 rgba(0, 0, 0, 0.45);
+  padding: 5px;
+  font-family: var(--font-pixel);
+  letter-spacing: 0;
+}
+
+.sysmsg-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55em 0.6em 0.55em 1em;
+  background: var(--navy);
+  border: 2px solid #4a4ad8;
+}
+
+.sysmsg-title {
+  font-size: calc(var(--text-pixel) * 0.75);
+  font-weight: 400;
+  color: #d8d8d8;
+}
+
+.sysmsg-close {
+  position: relative;
+  flex: none;
+  width: calc(var(--text-pixel) * 1.6);
+  aspect-ratio: 1;
+  background: var(--silver);
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 2px 2px 0 var(--silver-hi),
+    inset -2px -2px 0 var(--silver-mid);
+}
+
+.sysmsg-close::before,
+.sysmsg-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 3px;
+  background: var(--ink);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.sysmsg-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.sysmsgbody {
+  padding: 1.1em 0.75em 1.6em;
+  font-size: var(--text-pixel);
+  text-align: center;
+}
+
+.sysmsg-stats {
+  line-height: 1.45;
+  color: var(--white);
+  text-shadow:
+    -1px -1px 0 var(--silver-lo),
+     1px -1px 0 var(--silver-lo),
+    -1px  1px 0 var(--silver-lo),
+     1px  1px 0 var(--silver-lo),
+     2px  2px 0 var(--silver-mid);
+}
+
+.sysmsg-stats dt,
+.sysmsg-stats dd {
+  display: inline;
+}
+
+.sysmsg-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin-top: 1.3em;
+}
+
+.sysmsg-btn {
+  min-width: 7.5em;
+  padding: 0.6em 1em 0.5em;
+  font-size: 0.75em;
+  color: var(--ink);
+  background: var(--silver);
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 2px 2px 0 var(--silver-hi),
+    inset -2px -2px 0 var(--silver-mid);
+}
+
+
+
+
+.instructions-list {
+  padding-left: 1.3em;     
+  text-shadow: var(--text-halo);
+}
+
+.instructions-list li::marker {
+  color: var(--white);
+}
+
+.cookie {
+  width: 185%;
+  max-width: none;
+  margin-left: -33%;
+  pointer-events: none;
+}
+
+
+@media (min-width: 64rem) {
+
+  .recipe-top {
+    grid-template-columns: auto minmax(0, min(34vw, 40.5rem));
+    justify-content: start;
+    column-gap: clamp(2rem, 2.8vw, 3.5rem);
+    align-items: start;
+  }
+
+  .sysmsg {
+    margin-top: clamp(1.5rem, 2vw, 2.5rem);
+  }
+  .instructions-list {
+    max-width: 74%;
+  }
+
+
+  .recipe-top          { grid-area: 2 / 1; }
+  .instructions-section        { grid-area: 3 / 1; }
+
+  .recipe-top          { z-index: 1; }
+  .instructions-section         { z-index: 3; }
+
+        
+  .cookie {
+    --kitten-overlap: clamp(-2rem, 4.9vw - 5.15rem, 0.75rem);
+    grid-row: 2 / 4;
+    grid-column: 1;
+    align-self: start;
+    z-index: 2;
+    width: 105vw;
+    margin-left: calc(
+      16.6 * var(--text-body)
+      + clamp(2rem, 2.8vw, 3.5rem)
+      + min(34vw, 40.5rem)
+      - 36.75vw
+      - var(--kitten-overlap)
+    );
+    margin-bottom: -60vw;
+  }
+}
