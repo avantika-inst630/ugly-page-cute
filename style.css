@@ -82,7 +82,9 @@ body::before {
   display: grid;
   gap: 1.5rem;
 }
-
+.link{
+  color: white; 
+}
 
 .recipe-title,
 .section-heading {
