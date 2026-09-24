@@ -82,7 +82,13 @@ body::before {
   display: grid;
   gap: 1.5rem;
 }
-.link{
+
+
+
+.recipe,
+.recipe-header,
+.recipe-intro,
+a.link{
   color: white; 
 }
 
